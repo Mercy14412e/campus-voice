@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Campus Voice</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        padding: 25px;
+        background: linear-gradient(135deg, #07152e, #20205c, #5a236f);
+    }
+
+    /* Background Glow */
+
+    .glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(10px);
+        opacity: 0.7;
+        animation: move 8s infinite ease-in-out;
+        z-index: 0;
+    }
+
+    .glow1 {
+        width: 300px;
+        height: 300px;
+        background: #356dff;
+        top: -120px;
+        left: -100px;
+    }
+
+    .glow2 {
+        width: 280px;
+        height: 280px;
+        background: #e43c9d;
+        top: -100px;
+        right: -100px;
+    }
+
+    .glow3 {
+        width: 260px;
+        height: 260px;
+        background: #7b45ff;
+        bottom: -140px;
+        left: -100px;
+    }
+
+    .glow4 {
+        width: 280px;
+        height: 280px;
+        background: #ff6b81;
+        bottom: -150px;
+        right: -100px;
+    }
+
+    @keyframes move {
+        0%, 100% {
+            transform: translate(0, 0);
+        }
+
+        50% {
+            transform: translate(30px, -25px);
+        }
+    }
+
+
+    /* Main Container */
+
+    .container {
+        width: 100%;
+        max-width: 950px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        padding: 25px 0;
+    }
+
+
+    /* Logo */
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        color: white;
+        background: linear-gradient(135deg, #5b7cff, #b044e8);
+        border: 3px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 30px rgba(130, 80, 255, 0.8);
+    }
+
+
+    /* Heading */
+
+    h1 {
+        color: white;
+        font-size: 50px;
+        margin-bottom: 8px;
+    }
+
+    .voice {
+        background: linear-gradient(90deg, #8b7cff, #ff6fcf);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subtitle {
+        color: #dedcf5;
+        font-size: 16px;
+        margin-bottom: 28px;
+    }
+
+
+    /* Main Box */
+
+    .selection-box {
+        padding: 35px 45px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+
+    /* Steps */
+
+    .step {
+        display: none;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .step.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    /* Icons */
+
+    .heading-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        color: white;
+        background: linear-gradient(135deg, #4b7cff, #9b45e5);
+    }
+
+    .selection-box h2 {
+        color: white;
+        font-size: 32px;
+    }
+
+    .choose-text {
+        color: #d8d8ed;
+        margin: 8px 0 28px;
+    }
+
+
+    /* Details */
+
+    .details-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .input-group {
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .input-group label {
+        display: block;
+        color: white;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .optional {
+        color: #d2c5ff;
+        font-size: 12px;
+    }
+
+    .input-box {
+        width: 100%;
+        padding: 15px 18px;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        outline: none;
+        background: white;
+        color: #202448;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+    }
+
+
+    /* Cards */
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 300px;
+        padding: 30px 25px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    .card-icon {
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        font-size: 35px;
+    }
+
+    .blue-icon {
+        background: linear-gradient(135deg, #3975ff, #7138d8);
+    }
+
+    .pink-icon {
+        background: linear-gradient(135deg, #ff7c71, #ca31d0);
+    }
+
+    .green-icon {
+        background: linear-gradient(135deg, #00b894, #00cec9);
+    }
+
+    .orange-icon {
+        background: linear-gradient(135deg, #ff9f43, #ee5253);
+    }
+
+    .card h3 {
+        color: #202448;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #676b82;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* Buttons */
+
+    .continue-btn,
+    .details-btn,
+    .send-btn {
+        border: none;
+        border-radius: 30px;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .continue-btn {
+        width: 85%;
+        margin-top: 22px;
+        padding: 13px;
+    }
+
+    .details-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(90deg, #416dff, #c43de8);
+    }
+
+    .send-btn {
+        width: 80%;
+        margin-top: 22px;
+        padding: 15px;
+        background: linear-gradient(90deg, #416dff, #c43de8);
+    }
+
+    .continue-btn:hover,
+    .details-btn:hover,
+    .send-btn:hover {
+        transform: scale(1.04);
+    }
+
+    .blue-btn {
+        background: linear-gradient(90deg, #416dff, #862ce5);
+    }
+
+    .pink-btn {
+        background: linear-gradient(90deg, #e13ab7, #ff6c65);
+    }
+
+    .green-btn {
+        background: linear-gradient(90deg, #00a884, #00cec9);
+    }
+
+    .orange-btn {
+        background: linear-gradient(90deg, #ff8c42, #ee5253);
+    }
+
+
+    /* Back Button */
+
+    .back-btn {
+        margin-top: 25px;
+        padding: 10px 25px;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: transparent;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+    }
+
+
+    /* Feedback Info */
+
+    .feedback-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    .info-badge {
+        padding: 8px 15px;
+        border-radius: 20px;
+        color: white;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        font-size: 13px;
+    }
+
+
+    /* Message Box */
+
+    textarea {
+        width: 100%;
+        height: 160px;
+        padding: 18px;
+        border-radius: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        background: white;
+        color: #202448;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        resize: none;
+        outline: none;
+    }
+
+
+    /* Success */
+
+    .success-icon {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 45px;
+        color: white;
+        background: linear-gradient(135deg, #00b894, #00cec9);
+    }
+
+    .success-title {
+        color: white;
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .success-text {
+        color: #dedcf5;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+
+    /* Privacy */
+
+    .privacy {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px 22px;
+        border-radius: 30px;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 700px) {
+
+        body {
+            padding: 20px 10px;
+        }
+
+        h1 {
+            font-size: 38px;
+        }
+
+        .selection-box {
+            padding: 30px 18px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 330px;
+        }
+
+        .send-btn {
+            width: 100%;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- Background -->
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
+<div class="glow glow4"></div>
+
+
+<!-- Main -->
+
+<main class="container">
+
+
+    <div class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+    </div>
+
+
+    <h1>
+        Campus <span class="voice">Voice</span>
+    </h1>
+
+
+    <p class="subtitle">
+        Your Voice Matters. Your Identity Stays Private.
+    </p>
+
+
+    <div class="selection-box">
+
+
+        <!-- STEP 1 : NAME & COURSE -->
+
+        <div class="step active" id="step1">
+
+            <div class="heading-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h2>Welcome!</h2>
+
+            <p class="choose-text">
+                Please enter your details to continue
+            </p>
+
+
+            <div class="details-container">
+
+
+                <div class="input-group">
+
+                    <label>
+                        Enter Your Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        class="input-box"
+                        placeholder="Enter your name">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Enter Your Course
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="userCourse"
+                        class="input-box"
+                        placeholder="Example: BCA Data Science">
+
+                </div>
+
+
+                <button
+                    class="details-btn"
+                    onclick="continueFromDetails()">
+
+                    Continue
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 2 : ROLE -->
+
+        <div class="step" id="step2">
+
+            <div class="heading-icon">
+                <i class="fa-solid fa-user-group"></i>
+            </div>
+
+            <h2>Who are you?</h2>
+
+            <p class="choose-text">
+                Please select your role to continue
+            </p>
+
+
+            <div class="cards">
+
+
+                <!-- Student -->
+
+                <div class="card">
+
+                    <div class="card-icon blue-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <h3>Student</h3>
+
+                    <p>
+                        Share your complaints and suggestions safely.
+                    </p>
+
+                    <button
+                        class="continue-btn blue-btn"
+                        onclick="selectRole('Student')">
+
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Teacher -->
+
+                <div class="card">
+
+                    <div class="card-icon pink-icon">
+                        <i class="fa-solid fa-person-chalkboard"></i>
+                    </div>
+
+                    <h3>Teacher</h3>
+
+                    <p>
+                        Share your complaints and suggestions safely.
+                    </p>
+
+                    <button
+                        class="continue-btn pink-btn"
+                        onclick="selectRole('Teacher')">
+
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="back-btn"
+                onclick="goToStep(1)">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+
+            </button>
+
+
+        </div>
+
+
+        <!-- STEP 3 : GENDER / FACULTY -->
+
+        <div class="step" id="step3">
+
+            <div class="heading-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <h2 id="step3Title">
+                Select your gender
+            </h2>
+
+            <p class="choose-text">
+                Choose your category
+            </p>
+
+
+            <div
+                class="cards"
+                id="genderCards">
+
+            </div>
+
+
+            <button
+                class="back-btn"
+                onclick="goToStep(2)">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+
+            </button>
+
+
+        </div>
+
+
+        <!-- STEP 4 : FEEDBACK TYPE -->
+
+        <div class="step" id="step4">
+
+            <div class="heading-icon">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <h2>What do you want to send?</h2>
+
+            <p class="choose-text">
+                Select your feedback type
+            </p>
+
+
+            <div class="cards">
+
+
+                <!-- Complaint -->
+
+                <div class="card">
+
+                    <div class="card-icon orange-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <h3>Complaint</h3>
+
+                    <p>
+                        Report an issue or problem on campus.
+                    </p>
+
+                    <button
+                        class="continue-btn orange-btn"
+                        onclick="selectType('Complaint')">
+
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Suggestion -->
+
+                <div class="card">
+
+                    <div class="card-icon green-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <h3>Suggestion</h3>
+
+                    <p>
+                        Share your ideas to improve the campus.
+                    </p>
+
+                    <button
+                        class="continue-btn green-btn"
+                        onclick="selectType('Suggestion')">
+
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="back-btn"
+                onclick="goToStep(3)">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+
+            </button>
+
+
+        </div>
+
+
+        <!-- STEP 5 : MESSAGE -->
+
+        <div class="step" id="step5">
+
+            <div class="heading-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+
+            <h2>Write Your Message</h2>
+
+            <p class="choose-text">
+                Enter your complaint or suggestion
+            </p>
+
+
+            <div
+                class="feedback-info"
+                id="feedbackInfo">
+
+            </div>
+
+
+            <textarea
+                id="message"
+                placeholder="Example: Please improve the drinking water facility."></textarea>
+
+
+            <button
+                class="send-btn"
+                onclick="sendMessage()">
+
+                SEND
+                <i class="fa-brands fa-whatsapp"></i>
+
+            </button>
+
+
+            <br>
+
+
+            <button
+                class="back-btn"
+                onclick="goToStep(4)">
+
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+
+            </button>
+
+
+        </div>
+
+
+        <!-- STEP 6 : SUCCESS -->
+
+        <div class="step" id="step6">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2 class="success-title">
+                Thank You!
+            </h2>
+
+            <p class="success-text">
+                Your feedback has been prepared successfully.
+                WhatsApp is opening now.
+            </p>
+
+
+            <button
+                class="send-btn"
+                onclick="location.reload()">
+
+                <i class="fa-solid fa-house"></i>
+                Start Again
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="privacy">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <p>
+            Your feedback will be sent securely.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+    var userName = "";
+    var userCourse = "";
+
+    var selectedRole = "";
+    var selectedGender = "";
+    var selectedType = "";
+
+
+    /* STEP 1 */
+
+    function continueFromDetails() {
+
+        userName =
+            document.getElementById("userName").value.trim();
+
+        userCourse =
+            document.getElementById("userCourse").value.trim();
+
+
+        if (userName === "") {
+
+            alert("Please enter your name to continue.");
+
+            document.getElementById("userName").focus();
+
+            return;
+
+        }
+
+
+        goToStep(2);
+
+    }
+
+
+    /* STEP 2 */
+
+    function selectRole(role) {
+
+        selectedRole = role;
+
+
+        var genderCards =
+            document.getElementById("genderCards");
+
+
+        var step3Title =
+            document.getElementById("step3Title");
+
+
+        /* STUDENT */
+
+        if (role === "Student") {
+
+            step3Title.innerHTML =
+                "Select your gender";
+
+
+            genderCards.innerHTML =
+
+                '<div class="card">' +
+
+                    '<div class="card-icon blue-icon">' +
+                        '<i class="fa-solid fa-person"></i>' +
+                    '</div>' +
+
+                    '<h3>Boy</h3>' +
+
+                    '<p>Continue as a male student.</p>' +
+
+                    '<button class="continue-btn blue-btn" onclick="selectGender(\'Boy\')">' +
+                        'Continue <i class="fa-solid fa-arrow-right"></i>' +
+                    '</button>' +
+
+                '</div>' +
+
+
+                '<div class="card">' +
+
+                    '<div class="card-icon pink-icon">' +
+                        '<i class="fa-solid fa-person-dress"></i>' +
+                    '</div>' +
+
+                    '<h3>Girl</h3>' +
+
+                    '<p>Continue as a female student.</p>' +
+
+                    '<button class="continue-btn pink-btn" onclick="selectGender(\'Girl\')">' +
+                        'Continue <i class="fa-solid fa-arrow-right"></i>' +
+                    '</button>' +
+
+                '</div>';
+
+        }
+
+
+        /* TEACHER */
+
+        else {
+
+            step3Title.innerHTML =
+                "Select your faculty";
+
+
+            genderCards.innerHTML =
+
+                '<div class="card">' +
+
+                    '<div class="card-icon pink-icon">' +
+                        '<i class="fa-solid fa-person-dress"></i>' +
+                    '</div>' +
+
+                    '<h3>Ladies Faculty</h3>' +
+
+                    '<p>Continue as ladies faculty.</p>' +
+
+                    '<button class="continue-btn pink-btn" onclick="selectGender(\'Ladies Faculty\')">' +
+                        'Continue <i class="fa-solid fa-arrow-right"></i>' +
+                    '</button>' +
+
+                '</div>' +
+
+
+                '<div class="card">' +
+
+                    '<div class="card-icon blue-icon">' +
+                        '<i class="fa-solid fa-person-chalkboard"></i>' +
+                    '</div>' +
+
+                    '<h3>Gen Faculty</h3>' +
+
+                    '<p>Continue as general faculty.</p>' +
+
+                    '<button class="continue-btn blue-btn" onclick="selectGender(\'Gen Faculty\')">' +
+                        'Continue <i class="fa-solid fa-arrow-right"></i>' +
+                    '</button>' +
+
+                '</div>';
+
+        }
+
+
+        goToStep(3);
+
+    }
+
+
+    /* STEP 3 */
+
+    function selectGender(gender) {
+
+        selectedGender = gender;
+
+        goToStep(4);
+
+    }
+
+
+    /* STEP 4 */
+
+    function selectType(type) {
+
+        selectedType = type;
+
+
+        var categoryLabel =
+
+            selectedRole === "Student"
+                ? "Gender"
+                : "Faculty";
+
+
+        var courseInfo = "";
+
+
+        if (userCourse !== "") {
+
+            courseInfo =
+
+                '<span class="info-badge">' +
+                'Course: ' + userCourse +
+                '</span>';
+
+        }
+
+
+        document.getElementById("feedbackInfo").innerHTML =
+
+            '<span class="info-badge">' +
+            'Name: ' + userName +
+            '</span>' +
+
+            courseInfo +
+
+            '<span class="info-badge">' +
+            'Role: ' + selectedRole +
+            '</span>' +
+
+            '<span class="info-badge">' +
+            categoryLabel + ': ' + selectedGender +
+            '</span>' +
+
+            '<span class="info-badge">' +
+            'Type: ' + selectedType +
+            '</span>';
+
+
+        goToStep(5);
+
+    }
+
+
+    /* SEND MESSAGE */
+
+    function sendMessage() {
+
+        var message =
+
+            document.getElementById("message")
+            .value
+            .trim();
+
+
+        if (message === "") {
+
+            alert("Please write your message.");
+
+            return;
+
+        }
+
+
+        /* Your WhatsApp Number */
+
+        var principalNumber = "9000266753";
+
+
+        /* Student = Gender
+           Teacher = Faculty */
+
+        var categoryLabel =
+
+            selectedRole === "Student"
+                ? "Gender"
+                : "Faculty";
+
+
+        /* WhatsApp Message */
+
+        var whatsappMessage =
+
+            "USER FEEDBACK\n\n" +
+
+            "Name: " + userName + "\n" +
+
+            (userCourse !== ""
+                ? "Course: " + userCourse + "\n"
+                : "") +
+
+            "Role: " + selectedRole + "\n" +
+
+            categoryLabel + ": " +
+            selectedGender + "\n" +
+
+            "Type of Feedback: " +
+            selectedType + "\n\n" +
+
+            "Message:\n" +
+
+            message +
+
+            "\n\nThank You";
+
+
+        /* WhatsApp Link */
+
+        var whatsappURL =
+
+            "https://wa.me/91" +
+            principalNumber +
+            "?text=" +
+            encodeURIComponent(whatsappMessage);
+
+
+        /* Show Thank You Page */
+
+        goToStep(6);
+
+
+        /* Open WhatsApp */
+
+        setTimeout(function () {
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+        }, 700);
+
+    }
+
+
+    /* CHANGE STEP */
+
+    function goToStep(stepNumber) {
+
+        var steps =
+
+            document.querySelectorAll(".step");
+
+
+        for (
+            var i = 0;
+            i < steps.length;
+            i++
+        ) {
+
+            steps[i]
+                .classList
+                .remove("active");
+
+        }
+
+
+        document
+            .getElementById("step" + stepNumber)
+            .classList
+            .add("active");
+
+    }
+
+
+</script>
+```
+
+</body>
+
+</html>
